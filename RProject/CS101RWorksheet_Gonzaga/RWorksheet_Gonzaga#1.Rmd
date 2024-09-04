@@ -92,12 +92,12 @@ num_seq
 
 8.3 Mean of numbers from 20 to 60
 ```{r}
-
+mean (20:60)
 ```
 
 8.4 Sum of numbers from 51 to 91
 ```{r}
-
+  sum(51:91)
 ```
 
 8.5 Integers from 1 to 1,000
@@ -120,5 +120,39 @@ filtered_values
 Write the R code and its output.
 ```{r}
 backwards <- seq(100, 1)
-backwards
+print(backwards)
+```
+
+11. List all the natural numbers below 25 that are multiples of 3 or 5. Find the sum of these multiples.
+```{r}
+numbers <- 1:24
+multiples <- numbers[numbers %% 3 == 0 | numbers %% 5 == 0]
+print(multiples)
+sum_multiples <- sum(multiples)
+sum_multiples
+```
+a. How many data points from 10 to 11?
+```{r}
+length
+```
+
+b. Write the R code and its output from 10 and 11. 
+```{r}
+
+```
+12. Statements can be grouped together using braces ‘{’ and ‘}’. A group of statements
+is sometimes called a block. Single statements are evaluated when a new line is typed at the end of the syntactically complete statement. Blocks are not evaluated until a new line is entered after the closing brace.
+Enter this statement:
+x <- {0 + x + 5 + }
+Describe the output.
+
+You will get an error message in output indicating that the expression is incomplete because it ends with a + sign, which expects another value or expression to complete the arithmetic operation.
+
+13. *Set up a vector named score, consisting of 72, 86, 92, 63, 88, 89, 91, 92, 75,
+75 and 77. To access individual elements of an atomic vector, one generally uses the x[i] construction.
+Find x[2] and x[3]. Write the R code and its output.
+```{r}
+score <- c( 72, 86, 92, 63, 88, 89, 91, 92, 75, 75, 77)
+score[2]
+score[3]
 ```
