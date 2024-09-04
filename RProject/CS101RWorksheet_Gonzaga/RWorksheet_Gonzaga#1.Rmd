@@ -102,7 +102,7 @@ mean (20:60)
 
 8.5 Integers from 1 to 1,000
 
-a. How many data points from 8.1 to 8.4?_______
+a. How many data points from 8.1 to 8.4?
 
 b. Write the R code and its output from 8.1 to 8.4.
 
@@ -133,11 +133,13 @@ sum_multiples
 ```
 a. How many data points from 10 to 11?
 ```{r}
-length
+length (backwards) + length (numbers) + length (multiples) + length(sum_multiples)
 ```
 
 b. Write the R code and its output from 10 and 11. 
 ```{r}
+length (backwards) + length (numbers) + length (multiples) + length(sum_multiples)
+
 
 ```
 12. Statements can be grouped together using braces ‘{’ and ‘}’. A group of statements
@@ -156,3 +158,26 @@ score <- c( 72, 86, 92, 63, 88, 89, 91, 92, 75, 75, 77)
 score[2]
 score[3]
 ```
+
+14. *Create a vector a = c(1,2,NA,4,NA,6,7).
+
+a. Change the NA to 999 using the codes print(a,na.print="-999").
+
+b. Write the R code and its output. Describe the output.
+
+```{r}
+a <- c(1,2,NA,4,NA,6,7)
+print(a, na.print="-999")
+```
+
+15. A special type of function calls can appear on the left hand side of the assignment operator as in > class(x) <- "foo".
+
+Follow the codes below:
+name = readline(prompt="Input your name: ")
+age = readline(prompt="Input your age: ")
+print(paste("My name is",name, "and I am",age ,"years old."))
+print(R.version.string)
+
+What is the output of the above code?
+
+It ask to input your name and age. Then it prints the prompts, the output will be ("My name is [name] and I am [your age] years old.")
