@@ -102,8 +102,8 @@ mean (20:60)
 
 8.5 Integers from 1 to 1,000
 ```{r}
-thousands <- seq(1:1000)
-thousands
+int_seq <- seq(1, 1000)
+int_seq
 ```
 
 
@@ -119,7 +119,7 @@ length(sum) + length(mean) + length(num_seq) + length(int_seq)
 
 c. For 8.5 find only maximum data points until 10.
 ```{r}
-max(thousands[thousands <- 10])
+max(1,10)
 ```
 
 
@@ -173,16 +173,13 @@ score[2]
 score[3]
 ```
 
-14. *Create a vector a = c(1,2,NA,4,NA,6,7).
-
-a. Change the NA to 999 using the codes print(a,na.print="-999").
-
-b. Write the R code and its output. Describe the output.
+14. 
 
 ```{r}
-a <- c(1,2,NA,4,NA,6,7)
-print(a, na.print="-999")
+a = c(1,2,NA,4,NA,6,7)
+print(a,na.print="-999")
 ```
+# Using the code 'a, na.print="-999", The values of the vector 'a' was changed to -999.
 
 15. A special type of function calls can appear on the left hand side of the assignment operator as in > class(x) <- "foo".
 
