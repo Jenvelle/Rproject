@@ -30,6 +30,7 @@ length(age)
 reciprocal <- 1/age
 print(reciprocal)
 ```
+
 3. Assign also new_age <- c(age, 0, age)
 What happen to the new_age?
   
@@ -38,6 +39,7 @@ new_age <- c(age, 0, age)
 print(new_age)
 ```
 When printed, the vector that includes the original age values, followed by 0, and then the same age values repeated.
+
 
 4. Sort the values of age.
 Write the R code and its output.
@@ -78,6 +80,7 @@ doubled_data
 ```
 
 8. Generate a sequence for the following scenario:
+
 
 8.1 Integers from 1 to 100.
 ```{r}
@@ -130,6 +133,7 @@ Write the R code and its output.
 filtered_values <- Filter(function(i) { all(i %% c(3,5,7) != 0) }, seq(100))
 filtered_values
 ```
+
 10. Generate a sequence backwards of the integers from 1 to 100.
 Write the R code and its output.
 ```{r}
@@ -164,6 +168,8 @@ Describe the output.
 
 You will get an error message in output indicating that the expression is incomplete because it ends with a + sign, which expects another value or expression to complete the arithmetic operation.
 
+
+
 13. *Set up a vector named score, consisting of 72, 86, 92, 63, 88, 89, 91, 92, 75,
 75 and 77. To access individual elements of an atomic vector, one generally uses the x[i] construction.
 Find x[2] and x[3]. Write the R code and its output.
@@ -173,13 +179,15 @@ score[2]
 score[3]
 ```
 
+
 14. 
 
 ```{r}
 a = c(1,2,NA,4,NA,6,7)
 print(a,na.print="-999")
 ```
-# Using the code 'a, na.print="-999", The values of the vector 'a' was changed to -999.
+ Using the code 'a, na.print="-999", The values of the vector 'a' was changed to -999.
+
 
 15. A special type of function calls can appear on the left hand side of the assignment operator as in > class(x) <- "foo".
 
