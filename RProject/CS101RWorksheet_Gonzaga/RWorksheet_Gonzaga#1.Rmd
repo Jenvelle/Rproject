@@ -90,3 +90,35 @@ num_seq <- seq(20, 60)
 num_seq
 ```
 
+8.3 Mean of numbers from 20 to 60
+```{r}
+
+```
+
+8.4 Sum of numbers from 51 to 91
+```{r}
+
+```
+
+8.5 Integers from 1 to 1,000
+
+a. How many data points from 8.1 to 8.4?_______
+
+b. Write the R code and its output from 8.1 to 8.4.
+
+c. For 8.5 find only maximum data points until 10.
+
+
+9. *Print a vector with the integers between 1 and 100 that are not divisible by 3, 5 and 7 using filter option.
+Filter(function(i) { all(i %% c(3,5,7) != 0) }, seq(100))
+Write the R code and its output.
+```{r}
+filtered_values <- Filter(function(i) { all(i %% c(3,5,7) != 0) }, seq(100))
+filtered_values
+```
+10. Generate a sequence backwards of the integers from 1 to 100.
+Write the R code and its output.
+```{r}
+backwards <- seq(100, 1)
+backwards
+```
