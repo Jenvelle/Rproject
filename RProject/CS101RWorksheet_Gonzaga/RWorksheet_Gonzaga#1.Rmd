@@ -37,7 +37,7 @@ What happen to the new_age?
 new_age <- c(age, 0, age)
 print(new_age)
 ```
-When printed, it shows 
+When printed, the vector that includes the original age values, followed by 0, and then the same age values repeated.
 
 4. Sort the values of age.
 Write the R code and its output.
@@ -147,12 +147,12 @@ sum_multiples
 ```
 a. How many data points from 10 to 11?
 ```{r}
-length (backwards) + length (numbers) + length (multiples) + length(sum_multiples)
+length (backwards) + length (multiples) + length(sum_multiples)
 ```
 
 b. Write the R code and its output from 10 and 11. 
 ```{r}
-length (backwards) + length (numbers) + length (multiples) + length(sum_multiples)
+length (backwards) + length (multiples) + length(sum_multiples)
 
 
 ```
