@@ -146,6 +146,7 @@ pay
 ```
   b. Modify the power ranking and pay of J.K. Rowling. Change power ranking to 15 and pay to 90. Write the R scripts and its output.
 ```{r}
+celebrity_name[19] <- "J.K Rowling"
 power_ranking[19] <- 15
 pay[19] <- 90
 
@@ -163,7 +164,6 @@ rdata <- data_forbes[10:20, ]
 
 save(rdata, file = "Ranks.RData")
 
-load("Ranks.RData")
 rdata
 
 ```      
@@ -172,7 +172,6 @@ e. Describe its output
 
 
 9.
-
   a. Import the excel file into your RStudio. What is the R script?
 ```{r}
 library(openxlsx)
