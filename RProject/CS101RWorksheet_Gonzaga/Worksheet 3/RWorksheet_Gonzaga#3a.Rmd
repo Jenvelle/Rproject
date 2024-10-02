@@ -1,0 +1,52 @@
+---
+title: "RWorksheet_Gonzaga#3a"
+author: "sHAMEL GONZAGA"
+date: "2024-10-02"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# VECTORS
+
+```{r}
+LETTERS <- c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
+
+letters <- c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z")
+```
+
+# a.
+
+```{r}
+firstLet <- LETTERS[1:11]
+firstLet
+```
+
+# b.
+
+```{r}
+oddNum <- LETTERS[seq(1, 26, by = 2)]
+oddNum
+```
+
+# c.
+
+```{r}
+vowels <- LETTERS[c(1, 5, 9, 15, 21)]
+vowels
+```
+
+# d.
+
+```{r}
+lowerCase <- letters[22:26]
+lowerCase
+```
+
+# e.
+
+```{r}
+lowerCase <- letters[15:24]
+lowerCase
+```
