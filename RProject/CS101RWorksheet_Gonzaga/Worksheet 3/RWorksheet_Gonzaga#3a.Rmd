@@ -50,3 +50,138 @@ lowerCase
 lowerCase <- letters[15:24]
 lowerCase
 ```
+
+# 2
+
+# a.
+
+```{r}
+city <- c("Tuguegarao City", "Manila", "Iloilo City", "Tacloban", "Samal Island", "Davao City")
+city
+```
+
+# b.
+
+```{r}
+temp <- c(42, 39, 34, 34, 30, 27)
+temp
+```
+
+# c.
+
+```{r}
+dfCityAndTemp <- data.frame(city, temp)
+dfCityAndTemp
+```
+
+# d.
+
+```{r}
+names(dfCityAndTemp) <- c("City", "Temperature")
+dfCityAndTemp
+```
+
+# e.
+
+```{r}
+str(dfCityAndTemp)
+```
+# It represents the count, number of observations, and variables, and also the type of data of the 2 variables. This time the contents of the data frame are presented row wise. Besides, it only depicted the initial records of the variable, City.
+
+# f.
+
+```{r}
+dfCityAndTemp[3:4, ]
+```
+
+# g.
+
+```{r}
+highestTemp <- dfCityAndTemp$City[which.max(dfCityAndTemp$Temperature)]
+lowestTemp <- dfCityAndTemp$City[which.min(dfCityAndTemp$Temperature)]
+
+highestTemp
+lowestTemp
+```
+
+## MATRICES
+# 2.
+# a.
+```{r}
+matOne <- matrix(c(1,2,3,4,5,6,7,8,11,12,13,14),3,4)
+matOne
+```
+
+# b.
+
+```{r}
+timesTwo <- matOne * 2
+timesTwo
+```
+
+# c.
+
+```{r}
+rowTwo <- matOne [2, ]
+rowTwo
+```
+
+# d.
+
+```{r}
+colRow <- matOne [1:2, 3:4]
+colRow
+```
+
+# e.
+
+```{r}
+oneRow <- matOne [3, 2:3]
+oneRow
+```
+
+# f.
+
+```{r}
+colFour <- matOne [, 4]
+colFour
+```
+
+# g.
+
+```{r}
+colFour <- matOne [, 4]
+colFour
+```
+
+# h.
+
+```{r}
+dim(matOne) <- c(6, 2)
+matOne
+```
+
+## ARRAY
+# 3.
+# a.
+
+```{r}
+repArr<- rep(c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1), 2)
+arra <- array(repArr, dim = c(2, 4,3))
+arra
+```
+
+# b.
+
+```{r}
+dim(arra)
+```
+
+# c.
+
+```{r}
+rownames(arra) <- c("a", "b")
+colnames(arra) <- c("A", "B", "C", "D")
+dimnames(arra)[[3]] <- c("1st-Dimensional Array", "2nd-Dimensional Array", "3rd-Dimensional Array")
+arra
+```
