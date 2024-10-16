@@ -1,0 +1,121 @@
+---
+title: "RWorksheet_Gonzaga#4a.Rmd"
+author: "SHAMEL GONZAGA"
+date: "2024-10-16"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 1. Data Frame about shoe size and height.
+
+#a
+```{r}
+shoe_size <- c(6.5, 9.0, 8.5, 8.5, 10.5, 7.0, 9.5, 9.0, 13.0, 7.5, 10.5, 8.5, 
+               12.0, 10.5, 13.0, 11.5, 8.5, 5.0, 10.0, 6.5, 7.5, 8.5, 10.5, 8.5, 
+               10.5, 11.0, 9.0, 13.0)
+
+height <- c(66.0, 68.0, 64.5, 65.0, 70.0, 64.0, 70.0, 71.0, 72.0, 64.0, 74.5, 
+            67.0, 71.0, 71.0, 77.0, 72.0, 59.0, 62.0, 72.0, 66.0, 64.0, 67.0, 
+            73.0, 69.0, 72.0, 70.0, 69.0, 70.0)
+
+gender <- c('F', 'F', 'F', 'F', 'M', 'F', 'F', 'F', 'M', 'F', 'M', 'F', 'M', 
+            'M', 'M', 'M', 'F', 'F', 'M', 'F', 'F', 'M', 'M', 'F', 'M', 'M', 
+            'M', 'M')
+
+data1<- data.frame(
+  Shoe_Size = shoe_size,
+  Height = height,
+  Gender = gender
+)
+
+```
+output shows the tabular data of shoe size which consist the shoe sizes of 29 
+individuals, height consists the height in inches, and gender consists the 
+gender of the individuals where 'M' represents the males and 'F' the females.
+
+#b
+
+```{r}
+male_subset <- subset(data1, gender == 'M')
+male_subset
+
+female_subset <- subset(data1, gender == 'F')
+female_subset
+```
+
+#c
+
+```{r}
+male_subset <- subset(data1, gender == 'M')
+male_subset
+
+female_subset <- subset(data1, gender == 'F')
+female_subset
+```
+
+#d
+
+A positive correlation nearing the value of 1 exemplifies that there exists a 
+positive relationship – as the size of a shoe increases, usually, the height 
+goes up too.
+
+
+#2. 
+
+```{r}
+months_vector <- c(
+  "March", "April", "January", "November", "January", "September", 
+  "October", "September", "November", "August", "January", 
+  "November", "November", "February", "May", "August", "July", 
+  "December", "August", "August", "September", "November", 
+  "February", "April"
+)
+factor_months_vector <- factor(months_vector)
+factor_months_vector
+
+levels(factor_months_vector)
+```
+
+#3. 
+
+```{r}
+summary(months_vector)
+summary(factor_months_vector)
+```
+
+The factor version (factor_months_vector) is more beneficial for categorical 
+data such as months because it transforms and tally’s the specific levels 
+(months) at once. The character vector (months) are less effective in this case 
+because it doesn’t provide any sense of aggregation of the data. Rather, it just 
+considers the months as separate single text values
+
+The number of elements and character vector (months) will have been accomplished 
+by using the summary() on the character vector. This will be obtained with the 
+help of the summary() function applied to the factor called factor_months_vector, 
+which will offer the frequency of each level in the data base, or in other words, 
+it will show how many times each month was mentioned in the data set.
+
+#4.
+
+```{r}
+direction <- c("East", "West", "North")
+frequency <- c(1, 4, 3)
+
+new_order_data <- factor(direction, levels = c("East","West","North"))
+print(new_order_data)
+```
+
+#5.
+
+#a.
+```{r}
+file1 <- read.table("import_march.csv", header = TRUE, sep = ",")
+```
+
+#b.
+```{r}a
+print(file1)
+```
