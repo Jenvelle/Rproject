@@ -39,10 +39,10 @@ gender of the individuals where 'M' represents the males and 'F' the females.
 #b
 
 ```{r}
-male_subset <- subset(data1, gender == 'M')
+male_subset <- subset(data1, gender == 'M', select = c(Shoe_Size, Height))
 male_subset
 
-female_subset <- subset(data1, gender == 'F')
+female_subset <- subset(data1, gender == 'F', select = c(Shoe_Size, Height))
 female_subset
 ```
 
