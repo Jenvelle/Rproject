@@ -113,6 +113,7 @@ file1 <- read.table("import_march.csv", header = TRUE, sep = ",")
 ```
 
 #b.
-```{r}a
+```{r}
 print(file1)
 ```
+
