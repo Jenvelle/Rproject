@@ -49,11 +49,8 @@ female_subset
 #c
 
 ```{r}
-male_subset <- subset(data1, gender == 'M')
-male_subset
-
-female_subset <- subset(data1, gender == 'F')
-female_subset
+mean(data1$Shoe_Size)
+mean(data1$Height)
 ```
 
 #d
