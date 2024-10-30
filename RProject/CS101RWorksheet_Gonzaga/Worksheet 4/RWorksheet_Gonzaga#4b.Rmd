@@ -1,0 +1,89 @@
+---
+title: "RWorksheet_Gonzaga#4b"
+author: "Shamel Gonzaga"
+date: "2024-10-30"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Using Loop Function
+
+#1
+```{r}
+vectorA <- c(1, 2, 3, 4, 5)
+x <- matrix(vectorA, nrow = 5, ncol = 5)
+
+for (i in 1:5) {
+  for (j in 1:5) {
+    x[i, j] <- abs(i - j)
+  }
+}
+
+```
+
+#2
+```{r}
+for (i in 1:5) {
+  line <- rep ('"*"', i)
+  cat (line, sep = " ")
+  cat ("\n")
+}
+```
+#3
+```{r}
+#start <- as.integer(readline("Fibonacci sequence starting for the Fibonnaci Sequence: ")
+start <- 6
+x <- 0
+y <- 1
+index <- 1
+
+repeat {
+  start >= index
+  
+}
+```
+
+#4
+#a.
+```{r}
+data <- read.csv("Shoe_sizes.csv")
+head(data)
+```
+
+#b.
+```{r}
+male <- subset(data, Gender == "M")
+female <- subset(data, Gender == "F")
+
+s_males <- nrow(male)
+s_female <- nrow(female)
+```
+
+#c.
+```{r}
+genderCounts <- table(data$Gender)
+
+barplot(genderCounts,
+        main = "Number of Males and Females",
+        xlab = "Gender",
+        ylab = "Counts",
+        col = c("black", "pink"),
+        legend = row.names(genderCounts)
+        )
+```
+#5
+```{r}
+expenses <- c(Food = 60, Electricity = 10, Savings = 5, Miscellaneous = 25)
+percentages <- round(expenses / sum(expenses) * 100)
+labels <- paste(names(expenses), percentages, "%")
+colors <- c("orchid2", "plum2", "mistyrose", "pink")
+pie(expenses,
+    labels = labels,
+    col = colors,
+    main = "Dela Cruz Family Monthly Expenses")
+```
+
+#6
