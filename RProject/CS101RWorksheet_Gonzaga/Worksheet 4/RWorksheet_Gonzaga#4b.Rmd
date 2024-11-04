@@ -87,3 +87,146 @@ pie(expenses,
 ```
 
 #6
+# a.
+```{r}
+data(iris)
+str(iris)
+```
+
+# b.
+```{r}
+MeanSL <- mean(iris$Sepal.Length)
+MeanSW <- mean(iris$Sepal.Width)
+MeanPL <- mean(iris$Petal.Length)
+MeanPW <- mean(iris$Petal.Width)
+
+MeanSL 
+MeanSW 
+MeanPL
+MeanPW
+```
+# c.
+```{r}
+speciesC <- table(iris$Species)
+
+pie(speciesC,
+    main = "Iris Species Distribution",
+    legend = names(speciesC),
+    col = c("violet", "mistyrose", "pink"))
+  
+
+```
+# d. 
+```{r}
+Setosa <- subset(iris, Species == "setosa")
+Versicolor <- subset(iris, Species == "versicolor")
+Virginica <- subset(iris, Species == "virginica")
+
+tail(Setosa)
+tail(Versicolor)
+tail(Virginica)
+```
+# e. 
+```{r}
+colors <- c("setosa" = "violet", "versicolor" = "lightblue", "virginica" = "pink")
+pch_symbols <- c("setosa" = 16, "versicolor" = 17, "virginica" = 18)
+
+plot(iris$Sepal.Length, iris$Sepal.Width,
+     col = colors[iris$Species],
+     pch = pch_symbols[iris$Species],
+     main = "Iris Dataset",
+     sub = "Sepal Width and Length",
+     xlab = "Sepal Length",
+     ylab = "Sepal Width")
+
+legend("topright", legend = levels(iris$Species), 
+       col = c("violet", "lightblue", "pink"),
+       pch = c(16, 17, 18),
+       title = "Species")
+```
+# f.
+Each variety' sepal width and length are displayed on the y and x axis of the scatter plot, correspondingly. Additionally, it displays various shapes and colors to symbolize each specie. The size of the setosa from the virginica and versicolor varies significantly when viewed in the scatter plot. The species of virginica and versicolor overlap, indicating that their sizes are fairly comparable.
+
+# 7.
+# a. 
+```{r}
+library(knitr)
+library(readxl)
+alexa_data <- read_xlsx("alexa_file.xlsx")
+knitr::include_graphics("raaaaaa.png")
+
+alexa_data$variation <- gsub("Black  Dot", "BlackDot", alexa_data$variation)
+alexa_data$variation <- gsub("Black  Plus", "BlackPlus", alexa_data$variation)
+alexa_data$variation <- gsub("Black  Show", "BlackShow", alexa_data$variation)
+alexa_data$variation <- gsub("Black  Spot", "BlackSpot", alexa_data$variation)
+alexa_data$variation <- gsub("White  Dot", "WhiteDot", alexa_data$variation)
+alexa_data$variation <- gsub("White  Plus", "WhitePlus", alexa_data$variation)
+alexa_data$variation <- gsub("White  Show", "WhiteShow", alexa_data$variation)
+alexa_data$variation <- gsub("White  Spot", "WhiteSpot", alexa_data$variation)
+
+alexa_data$variation[1052:2000]
+```
+# b.
+```{r}
+variantC <- alexa_data %>%
+  count(variation)
+
+save(variantC, file = "variations.RData")
+```
+# c.
+```{r}
+barplot(
+  variant_counts$n, 
+  names.arg = variant_counts$variation, 
+  col = "pink"
+  main = "Total Count of Each Variant",
+  xlab = "Variants",
+  ylab = "Count",
+  las = 2
+)
+```
+# d. 
+```{r}
+black_white_counts <- variant_counts %>% 
+  filter(grepl("Black|White", variation))
+
+barplot(
+  matrix(black_white_counts$n, nrow = 2, byrow = TRUE), 
+  beside = TRUE, 
+  names.arg = gsub("^(Black|White)\\s", "", black_white_counts$variation[1:(nrow(black_white_counts)/2)]),
+  col = c("black", "white"),
+  main = "Counts of Black and White Variants",
+  xlab = "Variants",
+  ylab = "Count",
+  legend.text = c("Black", "White"),
+  args.legend = list(x = "topright", bty = "n")
+)
+```
+```{r}
+par(mfrow = c(1, 2))
+
+barplot(
+  variant_counts$n, 
+  names.arg = variant_counts$variation, 
+  col = "lightblue",
+  main = "Total Count of Each Variant",
+  xlab = "Variants",
+  ylab = "Count",
+  las = 2
+)
+black_white_counts <- variant_counts %>% 
+  filter(grepl("Black|White", variation))
+
+barplot(
+  matrix(black_white_counts$n, nrow = 2, byrow = TRUE), 
+  beside = TRUE, 
+  names.arg = gsub("^(Black|White)\\s", "", black_white_counts$variation[1:(nrow(black_white_counts)/2)]),
+  col = c("black", "white"),
+  main = "Counts of Black and White Variants",
+  xlab = "Variants",
+  ylab = "Count",
+  legend.text = c("Black", "White"),
+  args.legend = list(x = "topright", bty = "n")
+)
+```
+It is simpler to notice the entire number of variants in a single glance through the first graph, which displays all variants in a single sequence. A direct comparison of the black and white variations of each type is made possible by the second graph, which arranges the black and white variations for each type side by side.
