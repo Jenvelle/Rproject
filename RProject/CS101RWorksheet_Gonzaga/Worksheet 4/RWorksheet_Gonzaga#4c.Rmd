@@ -1,0 +1,275 @@
+---
+title: "RWorksheet_Gonzaga#4c"
+author: "SHAMEL GONZAGA"
+date: "2024-11-05"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 1.
+
+# a.
+```{r}
+mpg_data <- read.csv("mpg.csv")
+
+```
+
+# b.
+```{r}
+str(mpg_data)
+```
+Manufacturer, model, trans, drv, fl, and class.
+
+# c. 
+displ, year, cyl, cty, and hwy.
+
+# 2. 
+```{r}
+library(dplyr)
+library(ggplot2)
+
+manufacturer_count <- mpg %>%
+  group_by(manufacturer) %>%
+  summarise(num_models = n_distinct(model)) %>%
+  arrange(desc(num_models))
+
+manufacturer_count[1, ]
+
+model_count <- mpg %>%
+  group_by(model) %>%
+  summarise(num_variations = n()) %>%
+  arrange(desc(num_variations))
+
+model_count[1, ]
+```
+
+# a.
+```{r}
+unique_models <- mpg %>%
+  group_by(manufacturer) %>%
+  summarise(unique_models_count = n_distinct(model))
+
+unique_models
+```
+
+# b. 
+```{r}
+barplot(
+  unique_models$unique_models_count,
+  names.arg = unique_models$manufacturer,
+  las = 2,                    
+  col = "mistyrose",
+  main = "Number of Unique Models by Manufacturer",
+  xlab = "Manufacturer",
+  ylab = "Unique Models Count"
+)
+
+ggplot(unique_models, aes(x = reorder(manufacturer, -unique_models_count), y = unique_models_count)) +
+  geom_bar(stat = "identity", fill = "purple") +
+  labs(title = "Number of Unique Models by Manufacturer", x = "Manufacturer", y = "Unique Models Count") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+# 2. 
+
+# a. 
+```{r}
+mpg_summary <- mpg %>%
+  group_by(manufacturer, model) %>%
+  summarise(count = n()) %>%
+  ungroup()
+
+ggplot(mpg_summary, aes(x = reorder(model, count), y = manufacturer)) +
+  geom_point(aes(size = count, color = count)) +
+  labs(title = "Relationship between Model and Manufacturer with Frequency",
+       x = "Model",
+       y = "Manufacturer",
+       size = "Frequency",
+       color = "Frequency") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+# b. 
+It's difficult to compare the sizes to the frequency legend, and some of the points overlap which it's not of much use. These could be changed by adding the number to the y axis and using geom_jitter() to increase the visibility of the data points.
+
+# 3. 
+```{r}
+top_20_mpg <- head(mpg, 20)
+
+ggplot(top_20_mpg, aes(x = reorder(model, -year), y = year)) +
+  geom_point(aes(color = class), size = 3) + 
+  labs(title = "Model vs Year for Top 20 Vehicles in mpg Dataset",
+       x = "Model",
+       y = "Year") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+
+# 4. 
+```{r}
+car_counts <- mpg_data %>%
+  group_by(model) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+```
+# a.
+```{r}
+top_20 <- head(car_counts, 20)
+
+ggplot(top_20, aes(x = reorder(model, count), y = count, fill = count)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Top 20 Car Models by Count",
+       x = "Car Model",
+       y = "Number of Cars") +
+  scale_fill_gradient(low = "blue", high = "red") + 
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+
+# b. 
+```{r}
+ggplot(top_20, aes(x = reorder(model, count), y = count, fill = count)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Top 20 Car Models by Count (Horizontal)",
+       x = "Number of Cars",
+       y = "Car Model") +
+  scale_fill_gradient(low = "blue", high = "red") +  
+  theme_minimal() +
+  coord_flip()
+```
+
+# 5. 
+```{r}
+ggplot(mpg_data, aes(x = cyl, y = displ, color = displ)) +
+  geom_point(size = 3, alpha = 0.7) +  
+  labs(title = "Relationship between No. of Cylinders and Engine Displacement",
+       x = "Number of Cylinders",
+       y = "Engine Displacement (L)") +
+  scale_color_gradient(low = "blue", high = "red") + 
+  theme_minimal()
+```
+# a. 
+Shows a positive relationship the more number of cylinders, the higher the displacement.
+
+# 6. 
+```{r}
+ggplot(mpg_data, aes(x = displ, y = hwy, color = cty)) +
+  geom_point(size = 3, alpha = 0.7) + 
+  labs(title = "Relationship between Engine Displacement and Highway MPG",
+       x = "Engine Displacement (L)",
+       y = "Highway Miles per Gallon (MPG)") +
+  scale_color_gradient(low = "blue", high = "red") +
+  theme_minimal()
+```
+
+# 6. 
+```{r}
+traffic_data <- read.csv("traffic.csv")
+
+```
+# a.
+```{r}
+length(traffic_data)
+
+variable_names <- names(traffic_data)
+
+variable_names
+```
+# b. Subset the traffic dataset into junctions. What is the R codes and its output?
+```{r}
+unique_junctions <- unique(traffic_data$Junction)
+
+junctions_dataframes <- list()
+
+for (junction in unique_junctions) {
+  junctions_dataframes[[junction]] <- traffic_data %>%
+    filter(Junction == junction)
+}
+
+head(junctions_dataframes[[1]])
+```
+
+# c. 
+```{r}
+ggplot(traffic_data, aes(x = DateTime, y = Vehicles, color = Junction)) +
+  geom_line() +
+  labs(title = "Traffic Count by Junction",
+       x = "Date and Time",
+       y = "Number of Vehicles") +
+  theme_minimal() +
+  theme(legend.position = "right") 
+```
+# 7. 
+```{r}
+library(readxl)
+
+alexa_data <- read_excel("alexa_file.xlsx")
+```
+# a. 
+```{r}
+num_obs <- nrow(alexa_data)
+
+num_columns <- ncol(alexa_data)
+
+num_obs
+num_columns
+```
+# b.
+```{r}
+alexa_data$rating <- as.numeric(as.character(alexa_data$rating))
+alexa_data$verified_reviews <- as.numeric(as.character(alexa_data$verified_reviews))
+
+sum(is.na(alexa_data$rating))  
+sum(is.na(alexa_data$verified_reviews)) 
+
+variation_totals <- alexa_data %>%
+  group_by(variation) %>%  
+  summarize(Total_Rating = sum(rating, na.rm = TRUE),  
+            Total_Verified_Reviews = sum(verified_reviews, na.rm = TRUE))
+
+print(variation_totals)
+```
+# c.
+```{r}
+ggplot(variation_totals, aes(x = variation, y = Total_Rating)) +
+  geom_bar(stat = "identity", fill = "pink") +
+  labs(title = "Total Rating by Variation",
+       x = "Variation",
+       y = "Total Rating") +
+  theme_minimal()
+```
+Each bar on the graph represents the overall rating for a specific variation. Despite the fact that the names on the x axis overlap.
+# d. 
+```{r}
+reviews_by_date <- alexa_data %>%
+  group_by(date) %>%  
+  summarize(Total_Verified_Reviews = n())
+
+ggplot(reviews_by_date, aes(x = date, y = Total_Verified_Reviews)) +
+  geom_line(color = "red") +  
+  labs(title = "Total Verified Reviews Over Time", x = "Date", y = "Total Verified Reviews") +
+  theme_minimal()  
+```
+
+# e. 
+```{r}
+average_ratings <- alexa_data %>%
+  group_by(variation) %>%  
+  summarize(Average_Rating = mean(rating, na.rm = TRUE)) 
+
+highest_rating_variation <- average_ratings %>%
+  filter(Average_Rating == max(Average_Rating)) 
+
+ggplot(average_ratings, aes(x = reorder(variation, -Average_Rating), y = Average_Rating)) +
+  geom_bar(stat = "identity", fill = "purple") +  
+  labs(title = "Average Ratings by Variation",
+       x = "Variation",
+       y = "Average Rating") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
+```
